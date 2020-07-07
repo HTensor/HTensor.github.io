@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html style="display: none;" lang="en">
+<html style="display: none;" lang="cn">
     <head>
     <meta charset="utf-8">
     <!--
@@ -46,7 +46,7 @@
     
     <title>
         
-        Hexo
+        咕咕咕
     </title>
 
     <!-- Favicons -->
@@ -203,11 +203,11 @@
 
     <!-- WebAPP Icons -->
     <meta name="mobile-web-app-capable" content="yes">
-    <meta name="application-name" content="Hexo">
-    <meta name="msapplication-starturl" content="http://yoursite.com/">
+    <meta name="application-name" content="咕咕咕">
+    <meta name="msapplication-starturl" content="https://wjydog.xyz/">
     <meta name="msapplication-navbutton-color" content="#0097A7">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-title" content="Hexo">
+    <meta name="apple-mobile-web-app-title" content="咕咕咕">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <link rel="apple-touch-icon" href="/img/favicon.png">
 
@@ -219,9 +219,9 @@
     
 
     <!-- The Open Graph protocol -->
-    <meta property="og:url" content="http://yoursite.com/">
+    <meta property="og:url" content="https://wjydog.xyz/">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Hexo">
+    <meta property="og:title" content="咕咕咕">
     <meta property="og:image" content="/img/favicon.png">
     <meta property="og:description" content="">
     
@@ -233,7 +233,7 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="http://yoursite.com" />
+        <link rel="canonical" href="https://wjydog.xyz" />
     
 
     <!-- Structured-data for SEO -->
@@ -245,17 +245,17 @@
     "@type": "Website",
     "publisher": {
         "@type": "Organization",
-        "name": "Hexo",
+        "name": "咕咕咕",
         "logo": "/img/favicon.png"
     },
-    "url": "http://yoursite.com",
+    "url": "https://wjydog.xyz",
     "image": {
         "@type": "ImageObject",
         "url": "/img/favicon.png"
     },
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "http://yoursite.com"
+        "@id": "https://wjydog.xyz"
     },
     "description": ""
 }
@@ -292,7 +292,7 @@
                     var fd = new Date();
                     document.write(fd.getFullYear());
                 </script>
-                &nbsp;Hexo
+                &nbsp;咕咕咕
             </div>
             <!--
             I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright.
@@ -310,8 +310,8 @@
 
         <!-- Header Title -->
         <span class="header-title header-item">
-            <a href="/" title="Hexo">
-                Hexo
+            <a href="/" title="咕咕咕">
+                咕咕咕
             </a>
         </span>
 
@@ -327,7 +327,7 @@
         <nav class="header-nav header-item">
             <span class="header-nav-item">
                 <a href="/" title="Home">
-                    <span>Home</span>
+                    <span>رئيسية</span>
                 </a>
             </span>
 
@@ -411,8 +411,8 @@
         <!-- Post Header Info -->
         <div class="post_entry-header_info without-thumbnail">
             <!-- Author Avatar & Name -->
-            <img src="/img/avatar.png" class="avatar-img" width="44px" height="44px" alt="John Doe's avatar">
-            <span class="name-span">John Doe</span>
+            <img src="/img/avatar.png" class="avatar-img" width="44px" height="44px" alt="HTensor's avatar">
+            <span class="name-span">HTensor</span>
         </div>
 
         <!-- Null Thumbnail -->
@@ -434,7 +434,7 @@
             
             &nbsp;&nbsp;&nbsp;
             <span>
-                <a href="/2020/07/07/hello-world/" target="_self">Read more</a>
+                <a href="/2020/07/07/hello-world/" target="_self">واصل القراءة</a>
             </span>
         </p>
 
@@ -604,6 +604,42 @@
 console.log('\n %c © Material Theme | Version: 1.5.6 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
 </script>
 
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@latest/build/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@latest/build/styles/vs2015.min.css">
+<style>
+/* highlight.js: vs2015.css */
+.hljs {
+    /* 其余部分略 */
+    background: #1e1e1e;
+}
+
+/* Material Theme: style.css*/
+#post-content pre {
+    /* 其余部分略 */
+    background-color: #f7f7f7;
+}
+
+/* 在config_css.ejs中加入的内容，使用!important提高优先级 */
+/* 如果不使用公用CDN库，可以直接修改CSS文件 */
+pre {
+    background-color: #1e1e1e !important;
+    font-size: 15px !important;
+}
+
+.hljs {
+    margin: 0 0 0 0 !important;
+    padding-left: 0 !important;
+    line-height: 1.5em !important;
+}
+
+/* （可选）把highlight.js主题加入的斜体去掉，Visual Studio的注释并不是斜体啊喂！ */
+.hljs-comment {
+    font-style: normal;
+}
+</style>
                 </main>
             </div>
         </body>
