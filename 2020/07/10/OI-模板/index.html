@@ -46,7 +46,7 @@
     
     <title>
         
-            Archives | 
+            OI 模板 | 
         
         咕咕咕
     </title>
@@ -206,7 +206,7 @@
     <!-- WebAPP Icons -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="application-name" content="咕咕咕">
-    <meta name="msapplication-starturl" content="https://wjydog.xyz/archives/">
+    <meta name="msapplication-starturl" content="https://wjydog.xyz/2020/07/10/OI-%E6%A8%A1%E6%9D%BF/">
     <meta name="msapplication-navbutton-color" content="#0097A7">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="咕咕咕">
@@ -221,13 +221,16 @@
     
 
     <!-- The Open Graph protocol -->
-    <meta property="og:url" content="https://wjydog.xyz/archives/">
+    <meta property="og:url" content="https://wjydog.xyz/2020/07/10/OI-%E6%A8%A1%E6%9D%BF/">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Archives | 咕咕咕">
+    <meta property="og:title" content="OI 模板 | 咕咕咕">
     <meta property="og:image" content="/img/favicon.png">
     <meta property="og:description" content="">
     
 
+    
+        <meta property="article:published_time" content="Fri Jul 10 2020 09:06:51 GMT+0800">
+        <meta property="article:modified_time" content="Fri Jul 10 2020 09:07:26 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -235,13 +238,43 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="https://wjydog.xyz/archives/index.html" />
+        <link rel="canonical" href="https://wjydog.xyz/2020/07/10/OI-%E6%A8%A1%E6%9D%BF/index.html" />
     
 
     <!-- Structured-data for SEO -->
     
         
 
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "https://wjydog.xyz/2020/07/10/OI-%E6%A8%A1%E6%9D%BF/index.html",
+    "headline": "OI 模板",
+    "datePublished": "Fri Jul 10 2020 09:06:51 GMT+0800",
+    "dateModified": "Fri Jul 10 2020 09:07:26 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "HTensor",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/avatar.png"
+        },
+        "description": "Hi, nice to meet you"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "咕咕咕",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/favicon.png"
+        }
+    },
+    "keywords": "",
+    "description": "",
+}
+</script>
 
 
     
@@ -363,25 +396,29 @@
 
                     
 
-                    <!-- Index Module -->
-<div class="material-index mdl-grid">
-    
-    <div class="locate-thumbnail-symbol"></div>
+                    <!-- Post TOC -->
 
-    <!-- Pin on top -->
     
 
-    <!-- Normal Post -->
-    
-        
-            
-            
-                <!-- Isolation Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post_entry Header -->
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+
+
+    <!-- Isolation Post Header -->
+    <!-- Post thumbnail -->
     
         <!-- Post Header Info -->
-        <div class="post_entry-header_info without-thumbnail">
+        <div class="post-header_info without-thumbnail">
             <!-- Author Avatar & Name -->
             <img src="/img/avatar.png" class="avatar-img" width="44px" height="44px" alt="HTensor's avatar">
             <span class="name-span">HTensor</span>
@@ -392,112 +429,95 @@
     
         </div>
 
-    <!-- Post_entry Content -->
-    <div class="post_entry-content mdl-color-text--grey-600 mdl-card__supporting-text">
-        <!-- Post Title -->
-        <p class="post_entry-title">
-            <a href="/2020/07/10/OI-%E6%A8%A1%E6%9D%BF/">OI 模板</a>
-        </p>
 
-        <!-- Post Excerpt -->
-        <p class="post_entry-excerpt">
-            
-                #include &lt;iostream&gt;
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+
+    
+        <div class="post-content_wrapper">
+            <p class="post-title">
+                OI 模板
+            </p>
+            <pre><code class="cpp">#include &lt;iostream&gt;
 #include &lt;cstdio&gt;
-#inc...
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+
+#define e(str) cerr &lt;&lt; str &lt;&lt; endl
+#define d(x) cerr &lt;&lt; #x &lt;&lt; &quot; =&gt; &quot; &lt;&lt; x &lt;&lt; endl
+#define dd(x, step) _dd(#x, x, 0, step)
+#define ddd(x, st, step) _dd(#x, x, st, step)
+
+#define ms(x) memset(x, 0, sizeof x)
+
+#pragma GCC diagnostic error &quot;-std=c++11&quot;
+
+using namespace std;
+
+int get() {
+    int f = 1, val = 0; char ch = getchar();
+    while(!isdigit(ch)) f = (ch == &#39;-&#39; ? -1 : 1), ch = getchar();
+    while(isdigit(ch)) val = val * 10 + (ch &amp; 15), ch = getchar();
+    return f * val;
+}
+
+template &lt;typename T&gt;
+void _dd(string arrayName, T *p, int st, int step) {
+    p += st;
+    while(step --&gt; 0) {
+        cerr &lt;&lt; arrayName &lt;&lt; &quot;[&quot; &lt;&lt; st++ &lt;&lt; &quot;]&quot; &lt;&lt; &quot; =&gt; &quot; &lt;&lt; *(p++) &lt;&lt; endl;
+    }
+}
+
+signed main() {
+    //
+    return 0;
+}</code></pre>
+
             
-            &nbsp;&nbsp;&nbsp;
-            <span>
-                <a href="/2020/07/10/OI-%E6%A8%A1%E6%9D%BF/" target="_self">Read more</a>
-            </span>
-        </p>
-
-        <!-- Post Tags -->
-        
-    </div>
-
-    <!-- Post_entry Footer -->
-    <div class="post_entry-footer">
-        <div class="post_entry-footer-border"></div>
-        <div class="post_entry-footer-info">
-            <div class="post_entry-footer-date">
-                Jul 10, 2020
-            </div>
-            <div class="post_entry-footer-comment">
-                
-                
-            </div>
         </div>
-    </div>
+    
 </div>
 
-            
-        
-    
-        
-            
-            
-                <!-- Isolation Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post_entry Header -->
-    
-        <!-- Post Header Info -->
-        <div class="post_entry-header_info without-thumbnail">
-            <!-- Author Avatar & Name -->
-            <img src="/img/avatar.png" class="avatar-img" width="44px" height="44px" alt="HTensor's avatar">
-            <span class="name-span">HTensor</span>
-        </div>
 
-        <!-- Null Thumbnail -->
-        <div class="post_thumbnail-null">
-    
-        </div>
-
-    <!-- Post_entry Content -->
-    <div class="post_entry-content mdl-color-text--grey-600 mdl-card__supporting-text">
-        <!-- Post Title -->
-        <p class="post_entry-title">
-            <a href="/2020/07/07/hello-world/">Hello World</a>
-        </p>
-
-        <!-- Post Excerpt -->
-        <p class="post_entry-excerpt">
-            
-                Welcome to Hexo
-            
-            &nbsp;&nbsp;&nbsp;
-            <span>
-                <a href="/2020/07/07/hello-world/" target="_self">Read more</a>
-            </span>
-        </p>
-
-        <!-- Post Tags -->
-        
-    </div>
-
-    <!-- Post_entry Footer -->
-    <div class="post_entry-footer">
-        <div class="post_entry-footer-border"></div>
-        <div class="post_entry-footer-info">
-            <div class="post_entry-footer-date">
-                Jul 07, 2020
-            </div>
-            <div class="post_entry-footer-comment">
                 
+                    <!-- Paradox Post Info -->
+                    
+                
+
+                <!-- Post Comments -->
+                
+                    
                 
             </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2020/07/07/hello-world/" id="post_nav-older" class="next-content">
+            Older
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
         </div>
     </div>
-</div>
 
-            
-        
-    
-
-    
-
-    
-</div>
 
 
                     
