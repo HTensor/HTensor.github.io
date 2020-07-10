@@ -230,7 +230,7 @@
 
     
         <meta property="article:published_time" content="Fri Jul 10 2020 09:06:51 GMT+0800">
-        <meta property="article:modified_time" content="Fri Jul 10 2020 09:07:26 GMT+0800">
+        <meta property="article:modified_time" content="Fri Jul 10 2020 09:12:19 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -253,7 +253,7 @@
     "mainEntityOfPage": "https://wjydog.xyz/2020/07/10/OI-%E6%A8%A1%E6%9D%BF/index.html",
     "headline": "OI 模板",
     "datePublished": "Fri Jul 10 2020 09:06:51 GMT+0800",
-    "dateModified": "Fri Jul 10 2020 09:07:26 GMT+0800",
+    "dateModified": "Fri Jul 10 2020 09:12:19 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "HTensor",
@@ -477,7 +477,25 @@ signed main() {
     //
     return 0;
 }</code></pre>
-
+<p>VIM 配置文件：</p>
+<pre><code>set nu
+set ru
+set mouse=a
+set ci
+set ai
+set si
+set ts=4
+set sts=4
+set sw=4
+set et
+set smarttab
+inoremap &#39; &#39;&#39;&lt;ESC&gt;i
+inoremap &quot; &quot;&quot;&lt;ESC&gt;i
+inoremap ( ()&lt;ESC&gt;i
+inoremap [ []&lt;ESC&gt;i
+inoremap { {&lt;CR&gt;}&lt;ESC&gt;O
+map&lt;F9&gt; &lt;Esc&gt;:w&lt;CR&gt; : !g++ % -Wall &amp;&amp; ./a.out &lt;CR&gt;
+imap &lt;F9&gt; &lt;Esc&gt;:w&lt;CR&gt; :!g++ % -Wall &amp;&amp; ./a.out &lt;CR&gt;</code></pre>
             
         </div>
     
