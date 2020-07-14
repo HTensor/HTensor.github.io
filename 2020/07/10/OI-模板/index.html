@@ -230,7 +230,7 @@
 
     
         <meta property="article:published_time" content="Fri Jul 10 2020 09:06:51 GMT+0800">
-        <meta property="article:modified_time" content="Fri Jul 10 2020 09:12:19 GMT+0800">
+        <meta property="article:modified_time" content="Tue Jul 14 2020 11:29:01 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -253,7 +253,7 @@
     "mainEntityOfPage": "https://wjydog.xyz/2020/07/10/OI-%E6%A8%A1%E6%9D%BF/index.html",
     "headline": "OI 模板",
     "datePublished": "Fri Jul 10 2020 09:06:51 GMT+0800",
-    "dateModified": "Fri Jul 10 2020 09:12:19 GMT+0800",
+    "dateModified": "Tue Jul 14 2020 11:29:01 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "HTensor",
@@ -446,24 +446,35 @@
 #include &lt;cstdio&gt;
 #include &lt;cstring&gt;
 #include &lt;algorithm&gt;
+#include &lt;vector&gt;
 
 #define e(str) cerr &lt;&lt; str &lt;&lt; endl
 #define d(x) cerr &lt;&lt; #x &lt;&lt; &quot; =&gt; &quot; &lt;&lt; x &lt;&lt; endl
 #define dd(x, step) _dd(#x, x, 0, step)
 #define ddd(x, st, step) _dd(#x, x, st, step)
-
 #define ms(x) memset(x, 0, sizeof x)
+#define eol printf(&quot;\n&quot;)
 
 #pragma GCC diagnostic error &quot;-std=c++11&quot;
 
+#define Mod (static_cast&lt;int&gt;(1e9 + 7))
+
+#define LL
+
 using namespace std;
 
+#ifdef LL
+    #define int long long
+#endif
 int get() {
     int f = 1, val = 0; char ch = getchar();
     while(!isdigit(ch)) f = (ch == &#39;-&#39; ? -1 : 1), ch = getchar();
     while(isdigit(ch)) val = val * 10 + (ch &amp; 15), ch = getchar();
     return f * val;
 }
+#ifdef LL
+    #undef int
+#endif
 
 template &lt;typename T&gt;
 void _dd(string arrayName, T *p, int st, int step) {
@@ -473,10 +484,183 @@ void _dd(string arrayName, T *p, int st, int step) {
     }
 }
 
+class Matrix {
+#define ll long long
+private:
+    static const int N = 1e2 + 5;
+    static const int mod = Mod;
+
+public:
+    int m, n;
+    ll mat[N][N];
+
+    Matrix() {
+        m = 0, n = 0;
+        ms(mat);
+    }
+
+    Matrix(int nn) {
+        m = nn, n = nn;
+        ms(mat);
+    }
+
+    Matrix(int mm, int nn) {
+        m = mm, n = nn;
+        ms(mat);
+    }
+
+#ifdef LL
+    #define int long long
+#endif
+    Matrix(int mm, int nn, vector&lt;vector&lt;int&gt;&gt; mat) {
+        m = mm, n = nn;
+        for(int i = 0; i &lt; m; i++) {
+            for(int j = 0; j &lt; n; j++) {
+                this -&gt; mat[i + 1][j + 1] = mat[i][j];
+            }
+        }
+    }
+#ifdef LL
+    #undef int
+#endif
+
+    Matrix I(int nn) {
+        Matrix ret(nn);
+        for(int i = 1; i &lt;= n; i++) ret.mat[i][i] = 1;
+        return ret;
+    }
+
+    Matrix operator*(const Matrix &amp;b) const {
+        if(n != b.m) {
+            cerr &lt;&lt; &quot;Matrix mul error!&quot; &lt;&lt; endl;
+            exit(0);
+        }
+
+        Matrix ret(m, n);
+
+        for(int i = 1; i &lt;= n; i++) {
+            for(int j = 1; j &lt;= b.m; j++) {
+                for(int k = 1; k &lt;= n; k++) {
+                    ret.mat[i][j] += mat[i][k] * b.mat[k][j];
+                    ret.mat[i][j] %= mod;
+                }
+            }
+        }
+
+        return ret; 
+    }
+
+    Matrix operator*(const int a) const {
+        Matrix ret(m, n);
+
+        for(int i = 1; i &lt;= m; i++) {
+            for(int j = 1; j &lt;= n; j++) {
+                ret.mat[i][j] = mat[i][j] * a;
+                ret.mat[i][j] %= mod;
+            }
+        }
+
+        return *this;
+    }
+
+    Matrix operator*(const ll a) const {
+
+        Matrix ret(m, n);
+
+        for(int i = 1; i &lt;= m; i++) {
+            for(int j = 1; j &lt;= n; j++) {
+                ret.mat[i][j] = mat[i][j] * a;
+                ret.mat[i][j] %= mod;
+            }
+        }
+
+        return *this;
+    }
+
+    Matrix operator+(const Matrix &amp;b) const {
+
+        if(n != b.n or m != b.m) {
+            cerr &lt;&lt; &quot;Matrix add error!&quot; &lt;&lt; endl;
+            exit(0);
+        }
+
+        Matrix ret(m, n);
+
+        for(int i = 1; i &lt;= m; i++) {
+            for(int j = 1; j &lt;= n; j++) {
+                ret.mat[i][j] = mat[i][j] + b.mat[i][j];
+                ret.mat[i][j] %= mod;
+            }
+        }
+
+        return *this;
+    }
+
+    Matrix operator^(ll a) {
+        if(m != n) {
+            cerr &lt;&lt; &quot;Matrix pow error&quot; &lt;&lt; endl;
+            exit(0);
+        }
+
+        if(a &lt; 0) {
+            cerr &lt;&lt; &quot;Matrix: No Support ^- &quot; &lt;&lt; endl;
+        } else if(a == 0) {
+            return I(m); 
+        }
+
+        Matrix base = *this, ret = I(m);
+
+        while(a &gt; 0) {
+            if(a &amp; 1) 
+                ret = ret * base;
+
+            base = base * base;
+            a &gt;&gt;= 1;
+        }
+
+        return ret; 
+    }
+
+    friend istream &amp; operator&gt;&gt;(istream &amp;is, Matrix &amp;a) {
+        is &gt;&gt; a.m;
+        is &gt;&gt; a.n;
+        for(int i = 1; i &lt;= a.m; i++) {
+            for(int j = 1; j &lt;= a.n; j++) {
+                is &gt;&gt; a.mat[i][j];
+            }
+        }
+
+        return is;
+    }
+
+    friend ostream &amp; operator&lt;&lt;(ostream &amp;o, const Matrix &amp;a) {
+        o &lt;&lt; &quot;m: &quot; &lt;&lt; a.m &lt;&lt; &quot; &quot;;
+        o &lt;&lt; &quot;n: &quot; &lt;&lt; a.n;
+        eol;
+
+        for(int i = 1; i &lt;= a.m; i++) {
+            for(int j = 1; j &lt;= a.n; j++)
+                o &lt;&lt; a.mat[i][j] &lt;&lt; &quot; &quot;;
+            eol;
+        }
+
+        return o;
+    }
+
+#undef ll
+};
+
+#ifdef LL
+    #define int long long
+#endif
 signed main() {
     //
     return 0;
-}</code></pre>
+}
+
+#ifdef LL
+    #undef int
+#endif</code></pre>
 <p>VIM 配置文件：</p>
 <pre><code>set nu
 set ru
