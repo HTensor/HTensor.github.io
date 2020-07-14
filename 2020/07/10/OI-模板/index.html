@@ -230,7 +230,7 @@
 
     
         <meta property="article:published_time" content="Fri Jul 10 2020 09:06:51 GMT+0800">
-        <meta property="article:modified_time" content="Tue Jul 14 2020 11:29:01 GMT+0800">
+        <meta property="article:modified_time" content="Tue Jul 14 2020 12:22:40 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -253,7 +253,7 @@
     "mainEntityOfPage": "https://wjydog.xyz/2020/07/10/OI-%E6%A8%A1%E6%9D%BF/index.html",
     "headline": "OI 模板",
     "datePublished": "Fri Jul 10 2020 09:06:51 GMT+0800",
-    "dateModified": "Tue Jul 14 2020 11:29:01 GMT+0800",
+    "dateModified": "Tue Jul 14 2020 12:22:40 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "HTensor",
@@ -444,9 +444,9 @@
             </p>
             <pre><code class="cpp">#include &lt;iostream&gt;
 #include &lt;cstdio&gt;
-#include &lt;cstring&gt;
 #include &lt;algorithm&gt;
-#include &lt;vector&gt;
+#include &lt;cctype&gt;
+#include &lt;cstring&gt; 
 
 #define e(str) cerr &lt;&lt; str &lt;&lt; endl
 #define d(x) cerr &lt;&lt; #x &lt;&lt; &quot; =&gt; &quot; &lt;&lt; x &lt;&lt; endl
@@ -483,6 +483,14 @@ void _dd(string arrayName, T *p, int st, int step) {
         cerr &lt;&lt; arrayName &lt;&lt; &quot;[&quot; &lt;&lt; st++ &lt;&lt; &quot;]&quot; &lt;&lt; &quot; =&gt; &quot; &lt;&lt; *(p++) &lt;&lt; endl;
     }
 }
+
+#ifdef LL
+    #define Matrix_Container vector&lt;vector&lt;long long&gt;&gt;
+    #define rix vector&lt;long long&gt;
+#else
+    #define Matrix_Container vector&lt;vector&lt;int&gt;&gt;
+    #define rix vector&lt;int&gt;
+#endif
 
 class Matrix {
 #define ll long long
@@ -654,7 +662,7 @@ public:
     #define int long long
 #endif
 signed main() {
-    //
+
     return 0;
 }
 
